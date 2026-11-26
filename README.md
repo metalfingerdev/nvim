@@ -2,6 +2,22 @@
 
 This document provides a simple and organized overview of all the custom keybinds defined in my Neovim configuration.
 
+# Neovim config
+
+Keybinds below; `plugin/` and `lua/config/` hold the rest.
+
+## Requirements
+
+- Neovim 0.12 or newer.
+- `git`: plugins are cloned into `~/.local/share/nvim/plugins` on first start (`lua/manage.lua`, no plugin manager).
+- Tree-sitter parsers: nvim-treesitter builds `c go javascript lua nix php rust zig` into
+  `~/.local/share/nvim/site/parser` on first start (needs `tree-sitter` CLI, `curl`, `tar`, `cc`). The
+  `.so` files are not committed. Highlighting, folds and the `af`/`if` textobjects use `queries/`.
+- LSP servers on `PATH` (set up in `plugin/lsp.lua`, no Mason; each is optional): `lua-language-server`,
+  `vscode-langservers-extracted` (css, json), `intelephense`, `typescript-language-server`, `zls`, `nil`,
+  `rust-analyzer`, `clangd`, `gopls`, `c3-lsp`, `serve-d`, `haskell-language-server`.
+- `ripgrep` for Telescope grep.
+
 ## General Keybinds
 
 | Mode | Key             | Action                                                                                      |
@@ -99,19 +115,3 @@ This document provides a simple and organized overview of all the custom keybind
 | `n`  | `<leader>s`     | Replace all instances of the word under the cursor on the current line                      |
 
 ---
-
-# LSP servers:
-
-I am migrating my lsp config to /lua/plugins/lsp.lua because nvim v0.11 allows a very minimal debloated way to setup language server protocols. 
-
-Below is a running list of what and how to install the lsp's that are going to be configured in this build. I will avoid mason for now because I think its better to have full control over your system, and not outsource it to mason. Just uncommonet `return {` in /plugins/lsp.lua from the original lspconfig if you want to go that route.
-
-1. { lua-language-server } 
-  - refer to distro ( pacman -Ss lua-language-server )
-2. { css-language-server --studio, html-language-server }
-  - npm install -g vscode-langservers-extracted
-3. { intelephense }
-  - npm install -g intelephense
-4. { typescript-language-server }
-  - npm install -g typescript-language-server typescript
-

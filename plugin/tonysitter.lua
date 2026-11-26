@@ -1,3 +1,9 @@
+-- Build the parsers that used to be committed as parser/*.so (c and lua too, so they still override the
+-- ones Neovim bundles). Async, and skips any parser already installed; needs the tree-sitter CLI and cc.
+pcall(function()
+    require("nvim-treesitter").install({ "c", "go", "javascript", "lua", "nix", "php", "rust", "zig" })
+end)
+
 local function case_directive(transform)
     return function(match, _, bufnr, pred, metadata)
         local id = pred[2]

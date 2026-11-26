@@ -10,6 +10,7 @@ return {
     "folke/tokyonight.nvim",
     "nvim-lualine/lualine.nvim",
     "brenoprata10/nvim-highlight-colors",
+    { "nvim-treesitter/nvim-treesitter", branch = "main" },
     "tpope/vim-fugitive",
     "mbbill/undotree",
     "ojroques/vim-oscyank",
